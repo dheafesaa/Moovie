@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a style="color: white;">Hi! Welcome</a>
+      <a href="/"><img src="../assets/images/bookmark.svg"> List Movie</a>
+      <a href="/addmovie"><img src="../assets/images/add.svg"> Add Movie</a>
+    </div>
+    
+    <script>
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+    }
+    
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+    </script>
+    
+    <nav class="navbar navbar-dark bg-dark"> 
+      <div class="container-fluid">
+        <span style="font-size:30px;cursor:pointer;color:#ffffff" onclick="openNav()">&#9776;</span>
+        <div class="navbar-brand navbar-brand-centered mb-0 mx-auto"><h3><b>Moovieku</b></h3></div>
+      </div>
+    </nav>
+    
+    <% if(movie != null) { %>
+      
+      <%  
+      var data = JSON.parse( movie);
+      var i;
+      for (i = 0; i < data.length; i++) {   %>
+        
+    <div class="container mt-5 d-flex justify-content-center">
+      <div class="card mb-3" style="min-width: 1150px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img class="card-img img-thumbnail" alt="..." style="width: 340px; height: 475px;" src=<%- data[i].foto %>>
+          </div>
+        <div class="col-md-8 col-sm-4 col-xs-8">
+          <div class="card-body">
+            <h1 class="card-title text-center"><b><%- data[i].judul %></b></h1>
+            <p class="card-text">
+              <table border="0">
+                <tbody>
+                  <div class="d-flex">
+                    <img src="../assets/images/star.svg"> &nbsp
+                    <p class="my-2"><%- data[i].rating %></p>
+                  </div>
+                  <tr><td>Tahun Rilis</td><td>:</td><td><%- data[i].rilis %></td></tr>
+                  <tr><td>Durasi</td><td>:</td><td><%- data[i].durasi %></td></tr>
+                  <tr><td>Genre</td><td>:</td><td><%- data[i].genre %></td></tr>
+                  <tr><td>Sutradara</td><td>:</td><td><%- data[i].sutradara %></td></tr>
+                  <tr><td>Pemain Film</td><td>:</td><td><%- data[i].pemain %></td></tr>
+                  <tr><td>Deskripsi</td><td>:</td></tr>
+                </tbody>
+              </table>
+              <p><%- data[i].deskripsi %></p>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="w-100 text-center">
+      <a href="/" class="btn btn-primary">DONE</a>
+    </div>
+      
+      <% } %>
+    <% } %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  </body>
+</html>
